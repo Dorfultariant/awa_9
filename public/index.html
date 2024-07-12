@@ -22,27 +22,29 @@
             <div class="nav-wrapper">
                 <a href="#" class="brand-logo">Woche Neun</a>
                 <ul id="nav-mobile" class="right hide-on-med-and-down">
-                    <li><a href="#">Home</a></li>
-                    <li><a href="chat.html">Profile</a></li>
-                    <li><a href="#">Services</a></li>
-                    <!-- Add more navigation items as needed -->
+                    <li><a href="/index.html">Home</a></li>
                 </ul>
             </div>
         </nav>
 
         <div id="unauth-divizion" class="container center">
-            <button id="login-btn" type="button" class="left btn col">Login</button>
-            <button id="register-btn" type="button" class="left btn col">Create Account</button>
+            <a href="/login.html" class="left btn col">Login</a>
+            <a href="/register" class="left btn col">Create Account</a>
         </div>
 
         <div id="auth-divizion" class="container center hider">
-            <button id="logout-btn" class="btn">Logout</button>
+            <button id="logout" class="btn">Logout</button>
             <p id="email-field"></p>
+            <input id="add-item" type="text" class="text-field">
+            <p>Found Todos</p>
+            <p id="todos"> </p>
         </div>
 
 
         <script type="text/javascript"
             src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+
+
         <script type="text/javascript" src="javascripts/index.js"></script>
 
     </main>

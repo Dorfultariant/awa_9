@@ -32,30 +32,28 @@ router.get("/private", validateToken, (req, res, next) => {
 });
 
 router.post("/todos", validateToken, async (req, res, next) => {
-    console.log("Req body: ", req.body);
-    console.log("Req user: ", req.user);
-
+    console.log("Server received data:", req.body);
     try {
         const found_user_todo = await Todo.findOne({ user: req.user.id });
         if (found_user_todo) {
             // Feels like javascript is just hack on top of hack, ... to spread array of items individually to existing array.....
             found_user_todo.items.push(...req.body.items);
             await found_user_todo.save();
-            return res.status(200).send("Items added");
+            return res.status(200).json({ items: found_user_todo.items });
 
         } else {
-            await Todo.create({
+            const new_todo = {
                 user: req.user.id,
                 items: req.body.items
-            });
-            return res.status(200).send("Items added");
+            };
+            await Todo.create(new_todo);
+            return res.status(200).json({ items: req.body.items });
         }
     } catch (err) {
         console.log("Error:", err);
         return res.status(500).send("Internal server error: ");
     }
 });
-
 
 
 router.post("/login", upload.none(), async (req, res, next) => {
