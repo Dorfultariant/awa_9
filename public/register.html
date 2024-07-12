@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+    <!-- Import Google Icon Font -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!-- Import materialize.css -->
+    <link type="text/css" rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css"
+        media="screen,projection" />
+    <!-- Let the browser know the website is optimized for mobile -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+</head>
+
+
+<body>
+    <main>
+        <nav>
+            <div class="nav-wrapper">
+                <a href="#" class="brand-logo">Woche Neun</a>
+                <ul id="nav-mobile" class="right hide-on-med-and-down">
+                    <li><a href="#">Home</a></li>
+                    <li><a href="chat.html">Profile</a></li>
+                    <li><a href="#">Services</a></li>
+                    <!-- Add more navigation items as needed -->
+                </ul>
+            </div>
+        </nav>
+
+        <div class="container center">
+            <h2 class="left">Register</h2>
+            <form id="register-form" action="/api/user/register" method="post">
+                <input id="email-input" name="email" type="email" placeholder="Email" required>
+                <input id="password-input" name="password" type="password" placeholder="Password" required>
+                <input id="submit" type="submit" value="Create Account" class="row btn red">
+            </form>
+        </div>
+
+        <footer class="page-footer center sticky-footer">
+            <p>&copy; Copyright <span class="year">0000</span></p>
+        </footer>
+
+        <script type="text/javascript"
+            src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+        <!--         <script type="text/javascript" src="javascripts/register.js"></script> -->
+    </main>
+</body>
+
+</html>
