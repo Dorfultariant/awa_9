@@ -32,5 +32,6 @@ async function sendCredentials(event) {
 }
 
 function storeToken(token) {
+    console.log("Local token: ", token);
     localStorage.setItem("auth_token", token);
 }

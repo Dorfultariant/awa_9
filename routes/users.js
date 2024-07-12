@@ -61,8 +61,7 @@ router.post("/todos", validateToken, async (req, res, next) => {
 router.post("/login", upload.none(), async (req, res, next) => {
     try {
         const found_user = await User.findOne({ email: req.body.email });
-        console.log("found_user:", found_user);
-        console.log("Params: ", req);
+
         if (found_user == null) {
             return res.status(403).json({ email: "Could not find user" });
         }
@@ -70,9 +69,11 @@ router.post("/login", upload.none(), async (req, res, next) => {
         if (found_user.length === 0) {
             return res.status(403).json({ email: "Could not find user" });
         }
+
         // Even though language server complains, there needs to be await, otherwise the pw check passes with false credentials
         const is_og = await bcrypt.compare(req.body.password, found_user.password);
-        console.log(is_og);
+
+
         if (is_og) {
 
             const payload = {

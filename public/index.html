@@ -6,6 +6,8 @@
     <!-- Import Google Icon Font -->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <!-- Import materialize.css -->
+    <link type="text/css" rel="stylesheet" href="stylesheets/style.css" />
+
     <link type="text/css" rel="stylesheet"
         href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css"
         media="screen,projection" />
@@ -28,15 +30,21 @@
             </div>
         </nav>
 
-        <div class="container center">
+        <div id="unauth-divizion" class="container center">
             <button id="login-btn" type="button" class="left btn col">Login</button>
             <button id="register-btn" type="button" class="left btn col">Create Account</button>
+        </div>
+
+        <div id="auth-divizion" class="container center hider">
+            <button id="logout-btn" class="btn">Logout</button>
+            <p id="email-field"></p>
         </div>
 
 
         <script type="text/javascript"
             src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
         <script type="text/javascript" src="javascripts/index.js"></script>
+
     </main>
 </body>
 
