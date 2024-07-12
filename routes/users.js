@@ -31,6 +31,21 @@ router.get("/private", validateToken, (req, res, next) => {
     return res.status(200).json({ email: req.user.email });
 });
 
+
+router.get("/todos", validateToken, async (req, res, next) => {
+    try {
+        const user = await Todo.findOne({ user: req.user.id });
+        if (user) {
+            res.status(200).json({ items: user.items });
+        } else {
+            res.status(200).json({ items: "" });
+        }
+    } catch (err) {
+        return res.status(500).json({ items: "Internal Server Error" });
+    }
+});
+
+
 router.post("/todos", validateToken, async (req, res, next) => {
     console.log("Server received data:", req.body);
     try {

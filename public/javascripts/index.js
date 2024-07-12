@@ -1,18 +1,14 @@
 let todos_list = [];
 
 document.addEventListener("DOMContentLoaded", async () => {
-    const logout_btn = document.getElementById("logout");
+
+
+    //const logout_btn = document.getElementById("logout") || document.getElementById("notlog");
     const todo_inp = document.getElementById("add-item");
     const auth_div = document.getElementById("auth-divizion");
     const unauth_div = document.getElementById("unauth-divizion");
     const email_field = document.getElementById("email-field");
 
-    logout_btn.addEventListener("click", async () => {
-        localStorage.removeItem("auth_token");
-        todos_list = [];
-        showTodos();
-        window.location.reload();
-    });
 
     todo_inp.addEventListener("keypress", async (event) => {
         if (event.key === "Enter") {
@@ -52,11 +48,34 @@ document.addEventListener("DOMContentLoaded", async () => {
         unauth_div.classList.add("hider");
         auth_div.classList.remove("hider");
 
+        await createLogout();
         // Fetch initial todos on page load
         fetchTodos();
     }
 });
 
+async function createLogout() {
+    const innerhtml = `
+    <button id="logout" class="btn">Logout</button>`
+
+    document.getElementById("button").innerHTML = innerhtml;
+
+    const logout_btn = document.getElementById("logout");
+
+    logout_btn.addEventListener("click", async () => {
+        localStorage.removeItem("auth_token");
+        todos_list = [];
+
+        showTodos();
+        window.location.reload();
+        removeLogout();
+    });
+}
+
+async function removeLogout() {
+    const innerhtml = "";
+    document.getElementById("button").innerHTML = innerhtml;
+}
 
 async function fetchTodos() {
     try {
@@ -75,6 +94,7 @@ async function fetchTodos() {
         console.log("Error fetching todos:", err);
     }
 }
+
 
 function showTodos() {
     const todos = document.getElementById("todos");
